@@ -6,6 +6,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {PurgeCSSPlugin} = require("purgecss-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const PATHS = {
   src: path.join(__dirname, "src"),
@@ -26,6 +27,9 @@ module.exports = {
       },
     }),
     new CssMinimizerPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "src/public" }],
+    }),
   ],
   // devServer: {
   //   contentBase: './dist'
